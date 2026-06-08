@@ -1,0 +1,590 @@
+---
+import type { TranslationKeys } from "../../i18n/en";
+import type { Lang } from "../../i18n/utils";
+
+interface Props {
+  t: TranslationKeys;
+  lang: Lang;
+}
+
+const { t, lang } = Astro.props;
+const base = lang === "es" ? "/es" : "";
+---
+
+<section class="hero" aria-labelledby="hero-title">
+
+  <!-- Background decorations -->
+  <div class="hero__blob hero__blob--left"  aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--right" aria-hidden="true"></div>
+
+  <div class="container hero__container">
+
+    <!-- Left: Copy -->
+    <div class="hero__copy reveal">
+
+      <div class="hero__badge" aria-label="Resource badge">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        {t.hero.badge}
+      </div>
+
+      <h1 id="hero-title" class="hero__title">
+        {t.hero.title1}{" "}
+        <span class="hero__title-gradient">{t.hero.title2}</span>
+      </h1>
+
+      <p class="hero__description">{t.hero.description}</p>
+
+      <div class="hero__ctas">
+        <a href={`${base}/#calculator`} class="btn btn--primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="8" y1="6" x2="16" y2="6"/>
+            <line x1="8" y1="10" x2="16" y2="10"/>
+            <line x1="8" y1="14" x2="12" y2="14"/>
+          </svg>
+          {t.hero.ctaPrimary}
+        </a>
+        <a href={`${base}/#what-is`} class="btn btn--secondary">
+          {t.hero.ctaSecondary}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <polyline points="19 12 12 19 5 12"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero__stats" role="list">
+        <div class="hero__stat" role="listitem">
+          <span class="hero__stat-value">{t.hero.stats.savings}</span>
+          <span class="hero__stat-label">{t.hero.stats.savingsLabel}</span>
+        </div>
+        <div class="hero__stat" role="listitem">
+          <span class="hero__stat-value">{t.hero.stats.recyclable}</span>
+          <span class="hero__stat-label">{t.hero.stats.recyclableLabel}</span>
+        </div>
+        <div class="hero__stat" role="listitem">
+          <span class="hero__stat-value">{t.hero.stats.faster}</span>
+          <span class="hero__stat-label">{t.hero.stats.fasterLabel}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Interactive anatomy -->
+    <div class="hero__anatomy reveal" style="--reveal-delay: 150ms">
+
+      <div class="anatomy-card">
+        <span class="anatomy-card__badge">{t.hero.anatomy.badge}</span>
+        <h3 class="anatomy-card__subtitle">{t.hero.anatomy.subtitle}</h3>
+
+        <div class="anatomy-layers" role="list">
+
+          <!-- Outer layer -->
+          <button
+            class="layer layer--outer"
+            id="layer-outer"
+            data-layer="outer"
+            aria-pressed="false"
+            role="listitem"
+          >
+            <div class="layer__header">
+              <span class="layer__label">{t.hero.anatomy.outer.label}</span>
+              <span class="layer__tag layer__tag--exterior">{t.hero.anatomy.outer.tag}</span>
+            </div>
+            <p class="layer__desc">{t.hero.anatomy.outer.desc}</p>
+          </button>
+
+          <!-- Core layer -->
+          <button
+            class="layer layer--core"
+            id="layer-core"
+            data-layer="core"
+            aria-pressed="false"
+            role="listitem"
+          >
+            <div class="layer__header">
+              <span class="layer__label">{t.hero.anatomy.core.label}</span>
+              <span class="layer__tag layer__tag--insulation">{t.hero.anatomy.core.tag}</span>
+            </div>
+            <p class="layer__desc">{t.hero.anatomy.core.desc}</p>
+          </button>
+
+          <!-- Inner layer -->
+          <button
+            class="layer layer--inner"
+            id="layer-inner"
+            data-layer="inner"
+            aria-pressed="false"
+            role="listitem"
+          >
+            <div class="layer__header">
+              <span class="layer__label">{t.hero.anatomy.inner.label}</span>
+              <span class="layer__tag layer__tag--interior">{t.hero.anatomy.inner.tag}</span>
+            </div>
+            <p class="layer__desc">{t.hero.anatomy.inner.desc}</p>
+          </button>
+        </div>
+
+        <!-- Info box -->
+        <div class="anatomy-info" id="anatomy-info" aria-live="polite">
+          <div class="anatomy-info__icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="anatomy-info__title" id="anatomy-title">
+              {t.hero.anatomy.hint}
+            </h4>
+            <p class="anatomy-info__desc" id="anatomy-desc">
+              {t.hero.anatomy.hintDesc}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Pass translations to client script -->
+<script
+  type="application/json"
+  id="anatomy-data"
+  set:html={JSON.stringify({
+    outer: { title: t.hero.anatomy.outer.label, desc: t.hero.anatomy.outer.desc },
+    core:  { title: t.hero.anatomy.core.label,  desc: t.hero.anatomy.core.desc  },
+    inner: { title: t.hero.anatomy.inner.label, desc: t.hero.anatomy.inner.desc },
+  })}
+/>
+
+<script>
+  function initAnatomy() {
+    const dataEl = document.getElementById("anatomy-data");
+    if (!dataEl) return;
+
+    const data = JSON.parse(dataEl.textContent ?? "{}") as Record<string,{ title: string; desc: string }>;
+
+    const layers = document.querySelectorAll<HTMLElement>(".layer");
+    const titleEl = document.getElementById("anatomy-title");
+    const descEl  = document.getElementById("anatomy-desc");
+
+    layers.forEach((layer) => {
+      layer.addEventListener("click", () => {
+        const key = layer.dataset.layer ?? "";
+
+        // Toggle active state
+        layers.forEach((l) => {
+          l.classList.remove("layer--active");
+          l.setAttribute("aria-pressed", "false");
+        });
+        layer.classList.add("layer--active");
+        layer.setAttribute("aria-pressed", "true");
+
+        // Update info box
+        if (titleEl && descEl && data[key]) {
+          titleEl.textContent = data[key].title;
+          descEl.textContent  = data[key].desc;
+        }
+      });
+    });
+  }
+
+  initAnatomy();
+  document.addEventListener("astro:page-load", initAnatomy);
+</script>
+
+<style>
+  /* ─── Section ─── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      to bottom,
+      var(--color-brand-50),
+      white 60%,
+      var(--color-slate-50)
+    );
+    padding-block: var(--space-16) var(--space-24);
+  }
+
+  @media (min-width: 768px) {
+    .hero { padding-block: var(--space-24); }
+  }
+
+  /* ─── Blobs ─── */
+  .hero__blob {
+    position: absolute;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .hero__blob--left {
+    top: 25%;
+    left: -10rem;
+    background-color: rgb(186 230 253 / 0.4);
+  }
+
+  .hero__blob--right {
+    top: 50%;
+    right: -10rem;
+    background-color: rgb(209 250 229 / 0.3);
+  }
+
+  /* ─── Container ─── */
+  .hero__container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__container {
+      grid-template-columns: 7fr 5fr;
+    }
+  }
+
+  /* ─── Copy ─── */
+  .hero__copy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__copy { text-align: left; }
+  }
+
+  /* Badge */
+  .hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    align-self: center;
+    background-color: rgb(224 242 254 / 0.8);
+    color: var(--color-brand-800);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    border: 1px solid rgb(186 230 253 / 0.5);
+  }
+
+  @media (min-width: 1024px) {
+    .hero__badge { align-self: flex-start; }
+  }
+
+  .hero__badge-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--color-brand-600);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+
+  /* Title */
+  .hero__title {
+    font-size: var(--text-4xl);
+    font-weight: 900;
+    color: var(--color-slate-900);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  @media (min-width: 640px)  { .hero__title { font-size: var(--text-5xl); } }
+  @media (min-width: 1024px) { .hero__title { font-size: var(--text-6xl); } }
+
+  .hero__title-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-brand-600),
+      var(--color-brand-800)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Description */
+  .hero__description {
+    font-size: var(--text-lg);
+    color: var(--color-slate-600);
+    line-height: 1.7;
+    max-width: 56ch;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__description { margin-inline: 0; }
+  }
+
+  /* CTAs */
+  .hero__ctas {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  @media (min-width: 480px) {
+    .hero__ctas {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero__ctas { justify-content: flex-start; }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-8);
+    border-radius: var(--radius-2xl);
+    font-size: var(--text-base);
+    font-weight: 700;
+    transition: all var(--transition-normal);
+    white-space: nowrap;
+  }
+
+  .btn--primary {
+    background-color: var(--color-brand-600);
+    color: white;
+    box-shadow: 0 8px 24px rgb(2 132 199 / 0.2);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-brand-700);
+    box-shadow: 0 8px 28px rgb(2 132 199 / 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn--secondary {
+    background-color: white;
+    color: var(--color-slate-800);
+    border: 1.5px solid var(--color-slate-200);
+  }
+
+  .btn--secondary:hover {
+    background-color: var(--color-slate-100);
+    transform: translateY(-1px);
+  }
+
+  /* Stats */
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-slate-200);
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__stats { margin-inline: 0; }
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .hero__stat-value {
+    font-size: var(--text-2xl);
+    font-weight: 900;
+    color: var(--color-slate-950);
+    line-height: 1;
+  }
+
+  @media (min-width: 640px) {
+    .hero__stat-value { font-size: var(--text-3xl); }
+  }
+
+  .hero__stat-label {
+    font-size: var(--text-xs);
+    color: var(--color-slate-500);
+  }
+
+  /* ─── Anatomy card ─── */
+  .hero__anatomy {
+    display: flex;
+    justify-content: center;
+  }
+
+  .anatomy-card {
+    position: relative;
+    width: 100%;
+    max-width: 28rem;
+    background-color: white;
+    border: 1px solid var(--color-slate-200);
+    border-radius: var(--radius-3xl);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .anatomy-card__badge {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    background-color: var(--color-brand-600);
+    color: white;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+  }
+
+  .anatomy-card__subtitle {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-slate-400);
+    text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  /* ─── Layers ─── */
+  .anatomy-layers {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .layer {
+    width: 100%;
+    text-align: left;
+    border: 2px solid var(--color-slate-200);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-4);
+    background-color: var(--color-slate-50);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+  }
+
+  .layer:hover {
+    border-color: var(--color-brand-600);
+    background-color: rgb(240 249 255 / 0.5);
+  }
+
+  .layer--active {
+    border-color: var(--color-brand-600);
+    background-color: rgb(240 249 255 / 0.5);
+    box-shadow: 0 0 0 3px rgb(2 132 199 / 0.1);
+  }
+
+  .layer--core {
+    border-color: var(--color-brand-600);
+    background-color: rgb(255 251 235 / 0.4);
+  }
+
+  .layer--core:hover,
+  .layer--core.layer--active {
+    border-color: var(--color-amber-500);
+    background-color: var(--color-amber-50);
+  }
+
+  .layer__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-1);
+  }
+
+  .layer__label {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-slate-800);
+  }
+
+  .layer__tag {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 0.125rem var(--space-2);
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .layer__tag--exterior {
+    background-color: var(--color-brand-100);
+    color: var(--color-brand-800);
+  }
+
+  .layer__tag--insulation {
+    background-color: var(--color-amber-100);
+    color: var(--color-amber-600);
+  }
+
+  .layer__tag--interior {
+    background-color: var(--color-slate-200);
+    color: var(--color-slate-600);
+  }
+
+  .layer__desc {
+    font-size: var(--text-xs);
+    color: var(--color-slate-500);
+    line-height: 1.5;
+  }
+
+  /* ─── Info box ─── */
+  .anatomy-info {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    padding: var(--space-4);
+    background-color: rgb(240 249 255 / 0.5);
+    border: 1px solid var(--color-brand-100);
+    border-radius: var(--radius-2xl);
+  }
+
+  .anatomy-info__icon {
+    color: var(--color-brand-600);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .anatomy-info__title {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-brand-900);
+    margin-bottom: var(--space-1);
+  }
+
+  .anatomy-info__desc {
+    font-size: var(--text-xs);
+    color: var(--color-slate-600);
+    line-height: 1.5;
+  }
+
+  /* ─── Reveal delays ─── */
+  .reveal { transition-delay: var(--reveal-delay, 0ms); }
+</style>

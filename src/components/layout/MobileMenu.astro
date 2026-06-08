@@ -1,0 +1,97 @@
+---
+import NavLinks from "../ui/NavLinks.astro";
+import type { TranslationKeys } from "../../i18n/en";
+import type { Lang } from "../../i18n/utils";
+
+interface Props {
+  t: TranslationKeys;
+  lang: Lang;
+  alternatePath: string;
+}
+
+const { t, lang, alternatePath } = Astro.props;
+
+const base = lang === "es" ? "/es" : "";
+const altHref = lang === "es" ? alternatePath : "/es" + alternatePath;
+const altLabel = lang === "es" ? "EN" : "ES";
+---
+
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__inner">
+    <NavLinks t={t} lang={lang} variant="mobile" />
+
+    <div class="mobile-menu__footer">
+      <a href={altHref} class="mobile-menu__lang">
+        {altLabel === "ES" ? "🇪🇸" : "🇬🇧"} Switch to {altLabel}
+      </a>
+      <a href={`${base}/#download-guide`} class="mobile-menu__cta">
+        {t.nav.cta}
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mobile-menu {
+    display: none;
+    overflow: hidden;
+    background-color: white;
+    border-bottom: 1px solid var(--color-slate-100);
+    box-shadow: inset 0 -1px 0 var(--color-slate-100);
+  }
+
+  .mobile-menu.is-open {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .mobile-menu {
+      display: none !important;
+    }
+  }
+
+  .mobile-menu__inner {
+    padding: var(--space-3) var(--space-4) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .mobile-menu__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-slate-100);
+  }
+
+  .mobile-menu__lang {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-slate-600);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-lg);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .mobile-menu__lang:hover {
+    background-color: var(--color-slate-50);
+    color: var(--color-brand-600);
+  }
+
+  .mobile-menu__cta {
+    display: block;
+    text-align: center;
+    background-color: var(--color-brand-600);
+    color: white;
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-xl);
+    font-size: var(--text-base);
+    font-weight: 700;
+    transition: background-color var(--transition-fast);
+  }
+
+  .mobile-menu__cta:hover {
+    background-color: var(--color-brand-700);
+  }
+</style>

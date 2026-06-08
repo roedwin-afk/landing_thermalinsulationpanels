@@ -1,0 +1,205 @@
+---
+import { Leaf, TrendingDown, CloudLightning } from "lucide-astro";
+import type { TranslationKeys } from "../../i18n/en";
+import type { Lang } from "../../i18n/utils";
+
+interface Props {
+  t: TranslationKeys;
+  lang: Lang;
+}
+
+const { t } = Astro.props;
+
+const items = [
+  {
+    key:   "eco",
+    title: t.benefits.items.eco.title,
+    desc:  t.benefits.items.eco.desc,
+    tag:   t.benefits.items.eco.tag,
+    icon:  Leaf,
+    color: "green",
+  },
+  {
+    key:   "cost",
+    title: t.benefits.items.cost.title,
+    desc:  t.benefits.items.cost.desc,
+    tag:   t.benefits.items.cost.tag,
+    icon:  TrendingDown,
+    color: "blue",
+  },
+  {
+    key:   "weather",
+    title: t.benefits.items.weather.title,
+    desc:  t.benefits.items.weather.desc,
+    tag:   t.benefits.items.weather.tag,
+    icon:  CloudLightning,
+    color: "amber",
+  },
+];
+---
+
+<section id="benefits" class="benefits section-py" aria-labelledby="benefits-title">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="benefits__header reveal">
+      <span class="benefits__eyebrow">{t.benefits.eyebrow}</span>
+      <h2 id="benefits-title" class="benefits__title">{t.benefits.title}</h2>
+      <p class="benefits__description">{t.benefits.description}</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="benefits__grid" role="list">
+      {items.map((item, i) => (
+        <article
+          class={`benefit-card benefit-card--${item.color} reveal`}
+          style={`--reveal-delay: ${i * 120}ms`}
+          role="listitem"
+        >
+          <div class="benefit-card__top">
+            <div class={`benefit-card__icon benefit-card__icon--${item.color}`} aria-hidden="true">
+              <item.icon size={24} />
+            </div>
+            <h3 class="benefit-card__title">{item.title}</h3>
+            <p class="benefit-card__desc">{item.desc}</p>
+          </div>
+          <span class={`benefit-card__tag benefit-card__tag--${item.color}`}>
+            {item.tag}
+          </span>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ─── Section ─── */
+  .benefits {
+    background-color: var(--color-slate-50);
+  }
+
+  /* ─── Header ─── */
+  .benefits__header {
+    text-align: center;
+    max-width: 48rem;
+    margin-inline: auto;
+    margin-bottom: var(--space-16);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .benefits__eyebrow {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-eco-600);
+  }
+
+  .benefits__title {
+    font-size: var(--text-3xl);
+    font-weight: 900;
+    color: var(--color-slate-900);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  @media (min-width: 640px) {
+    .benefits__title { font-size: var(--text-4xl); }
+  }
+
+  .benefits__description {
+    font-size: var(--text-base);
+    color: var(--color-slate-600);
+    line-height: 1.7;
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 640px) {
+    .benefits__description { font-size: var(--text-lg); }
+  }
+
+  /* ─── Grid ─── */
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .benefits__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ─── Card ─── */
+  .benefit-card {
+    background-color: white;
+    border: 1px solid var(--color-slate-100);
+    border-radius: var(--radius-3xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-6);
+    transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+  }
+
+  .benefit-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  .benefit-card__top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  /* ─── Icon ─── */
+  .benefit-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-2xl);
+    flex-shrink: 0;
+  }
+
+  .benefit-card__icon--green { background-color: var(--color-eco-50);   color: var(--color-eco-600); }
+  .benefit-card__icon--blue  { background-color: var(--color-brand-100); color: var(--color-brand-600); }
+  .benefit-card__icon--amber { background-color: var(--color-amber-100); color: var(--color-amber-600); }
+
+  /* ─── Text ─── */
+  .benefit-card__title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-slate-950);
+    line-height: 1.3;
+  }
+
+  .benefit-card__desc {
+    font-size: var(--text-sm);
+    color: var(--color-slate-600);
+    line-height: 1.7;
+  }
+
+  /* ─── Tag ─── */
+  .benefit-card__tag {
+    align-self: flex-start;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+  }
+
+  .benefit-card__tag--green { background-color: var(--color-eco-50);   color: var(--color-eco-600); }
+  .benefit-card__tag--blue  { background-color: var(--color-brand-50);  color: var(--color-brand-600); }
+  .benefit-card__tag--amber { background-color: var(--color-amber-50);  color: var(--color-amber-600); }
+
+  /* ─── Reveal delays ─── */
+  .reveal { transition-delay: var(--reveal-delay, 0ms); }
+</style>

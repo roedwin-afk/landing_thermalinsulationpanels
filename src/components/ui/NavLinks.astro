@@ -1,0 +1,90 @@
+---
+import type { TranslationKeys } from "../../i18n/en";
+import type { Lang } from "../../i18n/utils";
+
+interface Props {
+  t: TranslationKeys;
+  lang: Lang;
+  variant?: "navbar" | "footer" | "mobile";
+}
+
+const { t, lang, variant = "navbar" } = Astro.props;
+
+const base = lang === "es" ? "/es" : "";
+
+const links = [
+  { href: `${base}/#what-is`,    label: t.nav.whatIs     },
+  { href: `${base}/#benefits`,   label: t.nav.benefits   },
+  { href: `${base}/#calculator`, label: t.nav.calculator },
+  { href: `${base}/#blog`,       label: t.nav.blog       },
+];
+---
+
+<ul class={`nav-links nav-links--${variant}`} role="list">
+  {links.map((link) => (
+    <li>
+      <a href={link.href} class="nav-link">
+        {link.label}
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  /* ─── Base ─── */
+  .nav-links {
+    display: flex;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-slate-600);
+    transition: color var(--transition-fast);
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-brand-600);
+  }
+
+  /* ─── Footer variant ─── */
+  .nav-links--footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .nav-links--footer .nav-link {
+    font-size: var(--text-xs);
+    color: var(--color-slate-400);
+  }
+
+  .nav-links--footer .nav-link:hover {
+    color: white;
+  }
+
+  /* ─── Mobile variant ─── */
+  .nav-links--mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+    width: 100%;
+  }
+
+  .nav-links--mobile .nav-link {
+    display: block;
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-lg);
+    font-size: var(--text-base);
+    color: var(--color-slate-600);
+  }
+
+  .nav-links--mobile .nav-link:hover {
+    background-color: var(--color-slate-50);
+    color: var(--color-brand-600);
+  }
+</style>
