@@ -1,0 +1,508 @@
+---
+import type { TranslationKeys } from "../../i18n/en";
+
+interface Props {
+  t: TranslationKeys;
+}
+
+const { t } = Astro.props;
+const c = t.calculator;
+---
+
+<section id="calculator" class="calculator reveal">
+  <div class="calculator__bg-blob"></div>
+
+  <div class="container calculator__inner">
+
+    <!-- Columna izquierda: texto explicativo -->
+    <div class="calculator__copy">
+      <span class="eyebrow">{c.eyebrow}</span>
+      <h2 class="calculator__title">{c.title}</h2>
+      <p class="calculator__desc">{c.description}</p>
+
+      <ul class="calculator__checks">
+        <li class="calculator__check">
+          <span class="calculator__check-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <strong>{c.checks.sizing.title}</strong>
+            <p>{c.checks.sizing.desc}</p>
+          </div>
+        </li>
+        <li class="calculator__check">
+          <span class="calculator__check-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <div>
+            <strong>{c.checks.efficiency.title}</strong>
+            <p>{c.checks.efficiency.desc}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna derecha: wizard interactivo -->
+    <div class="calculator__wizard">
+      <h3 class="wizard__title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10"
+          x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8"
+          x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12"
+          x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8"
+          x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        {c.wizard.title}
+      </h3>
+
+      <!-- Selector de aplicación -->
+      <div class="wizard__field">
+        <label class="wizard__label" for="calc-app">{c.wizard.appLabel}</label>
+        <select id="calc-app" class="wizard__select">
+          <option value="residential">{c.wizard.apps.residential}</option>
+          <option value="industrial">{c.wizard.apps.industrial}</option>
+          <option value="cold-chill">{c.wizard.apps.coldChill}</option>
+          <option value="cold-freeze">{c.wizard.apps.coldFreeze}</option>
+        </select>
+      </div>
+
+      <!-- Selector de clima -->
+      <div class="wizard__field">
+        <label class="wizard__label">{c.wizard.climateLabel}</label>
+        <div class="wizard__climate-group">
+          <button
+            class="wizard__climate-btn is-active"
+            data-climate="mild"
+            type="button"
+          >{c.wizard.climates.mild}</button>
+          <button
+            class="wizard__climate-btn"
+            data-climate="extreme-hot"
+            type="button"
+          >{c.wizard.climates.hot}</button>
+          <button
+            class="wizard__climate-btn"
+            data-climate="extreme-cold"
+            type="button"
+          >{c.wizard.climates.cold}</button>
+        </div>
+      </div>
+
+      <!-- Output: resultados -->
+      <div class="wizard__output">
+        <div class="wizard__output-row">
+          <div>
+            <span class="wizard__output-label">{c.wizard.resultThickness}</span>
+            <span class="wizard__thickness" id="calc-thickness">50 mm</span>
+          </div>
+          <div class="wizard__output-right">
+            <span class="wizard__output-label">{c.wizard.resultRValue}</span>
+            <span class="wizard__rvalue" id="calc-rvalue">~2.27</span>
+          </div>
+        </div>
+
+        <!-- Mockup visual de espesor -->
+        <div class="wizard__mockup-wrap">
+          <span class="wizard__output-label">{c.wizard.mockupLabel}</span>
+          <div class="wizard__mockup">
+            <div class="wizard__mockup-skin"></div>
+            <div class="wizard__mockup-core" id="calc-foam">
+              <span class="wizard__mockup-core-label" id="calc-core-label">
+                {c.wizard.insulatingCore}
+              </span>
+            </div>
+            <div class="wizard__mockup-skin"></div>
+          </div>
+          <div class="wizard__mockup-legend">
+            <span>{c.wizard.steelSkin}</span>
+            <span>{c.wizard.insulatingCore}</span>
+            <span>{c.wizard.steelSkin}</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#download-guide" class="wizard__cta">{c.wizard.cta}</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  type AppKey = "residential" | "industrial" | "cold-chill" | "cold-freeze";
+  type ClimateKey = "mild" | "extreme-hot" | "extreme-cold";
+
+  interface CalcResult {
+    thickness: number;
+    rValue: number;
+  }
+
+  const TABLE: Record<AppKey, Record<ClimateKey, CalcResult>> = {
+    residential:  { mild: { thickness: 50,  rValue: 2.27 }, "extreme-hot": { thickness: 80,  rValue: 3.63 }, "extreme-cold": { thickness: 100, rValue: 4.54 } },
+    industrial:   { mild: { thickness: 80,  rValue: 3.63 }, "extreme-hot": { thickness: 100, rValue: 4.54 }, "extreme-cold": { thickness: 120, rValue: 5.45 } },
+    "cold-chill": { mild: { thickness: 100, rValue: 4.54 }, "extreme-hot": { thickness: 120, rValue: 5.45 }, "extreme-cold": { thickness: 140, rValue: 6.36 } },
+    "cold-freeze":{ mild: { thickness: 150, rValue: 6.81 }, "extreme-hot": { thickness: 200, rValue: 9.09 }, "extreme-cold": { thickness: 180, rValue: 8.18 } },
+  };
+
+  let selectedClimate: ClimateKey = "mild";
+
+  function updateUI(result: CalcResult) {
+    const thicknessEl = document.getElementById("calc-thickness");
+    const rvalueEl    = document.getElementById("calc-rvalue");
+    const foamEl      = document.getElementById("calc-foam");
+
+    if (thicknessEl) thicknessEl.textContent = `${result.thickness} mm`;
+    if (rvalueEl)    rvalueEl.textContent    = `~${result.rValue.toFixed(2)}`;
+
+    if (foamEl) {
+      const pct = Math.max(15, Math.min(90, (result.thickness / 200) * 90));
+      foamEl.style.flexBasis = `${pct}%`;
+    }
+  }
+
+  function recalculate() {
+    const select = document.getElementById("calc-app") as HTMLSelectElement | null;
+    if (!select) return;
+    const app = select.value as AppKey;
+    const result = TABLE[app]?.[selectedClimate];
+    if (result) updateUI(result);
+  }
+
+  function initCalculator() {
+    const select = document.getElementById("calc-app");
+    select?.addEventListener("change", recalculate);
+
+    document.querySelectorAll<HTMLButtonElement>(".wizard__climate-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".wizard__climate-btn").forEach(b => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        selectedClimate = btn.dataset.climate as ClimateKey;
+        recalculate();
+      });
+    });
+
+    recalculate();
+  }
+
+  // Compatibilidad con View Transitions
+  document.addEventListener("astro:page-load", initCalculator);
+</script>
+
+<style>
+  .calculator {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-slate-900);
+    color: white;
+    padding-block: var(--space-24);
+  }
+
+  .calculator__bg-blob {
+    position: absolute;
+    top: -16rem;
+    left: -16rem;
+    width: 32rem;
+    height: 32rem;
+    background: color-mix(in srgb, var(--color-brand-600) 20%, transparent);
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .calculator__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .calculator__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ── Copy ── */
+  .eyebrow {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand-400, #38bdf8);
+    margin-bottom: var(--space-3);
+  }
+
+  .calculator__title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 640px) {
+    .calculator__title { font-size: var(--text-4xl); }
+  }
+
+  .calculator__desc {
+    color: var(--color-slate-300);
+    font-size: var(--text-base);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+  }
+
+  .calculator__checks {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .calculator__check {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .calculator__check-icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--color-brand-600) 15%, transparent);
+    color: var(--color-brand-400, #38bdf8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .calculator__check strong {
+    display: block;
+    font-size: var(--text-sm);
+    color: white;
+    margin-bottom: var(--space-1);
+  }
+
+  .calculator__check p {
+    font-size: var(--text-xs);
+    color: var(--color-slate-400);
+    line-height: 1.5;
+  }
+
+  /* ── Wizard ── */
+  .calculator__wizard {
+    background: var(--color-slate-800);
+    border: 1px solid var(--color-slate-700);
+    border-radius: var(--radius-3xl);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .wizard__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: white;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-slate-700);
+    color: var(--color-brand-400, #38bdf8);
+  }
+
+  .wizard__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .wizard__label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate-400);
+  }
+
+  .wizard__select {
+    width: 100%;
+    background: var(--color-slate-950, #020617);
+    border: 1px solid var(--color-slate-700);
+    border-radius: var(--radius-xl);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--space-3) center;
+    padding-right: var(--space-10);
+  }
+
+  .wizard__select:focus {
+    outline: none;
+    border-color: var(--color-brand-600);
+  }
+
+  .wizard__climate-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+
+  .wizard__climate-btn {
+    padding: var(--space-2) var(--space-1);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-slate-700);
+    background: var(--color-slate-900);
+    color: var(--color-slate-400);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition:
+      border-color var(--transition-fast),
+      background var(--transition-fast),
+      color var(--transition-fast);
+    text-align: center;
+  }
+
+  .wizard__climate-btn:hover {
+    border-color: var(--color-slate-500);
+    color: var(--color-slate-300);
+  }
+
+  .wizard__climate-btn.is-active {
+    background: color-mix(in srgb, var(--color-brand-600) 20%, transparent);
+    border-color: var(--color-brand-600);
+    color: var(--color-brand-400, #38bdf8);
+  }
+
+  /* ── Output ── */
+  .wizard__output {
+    background: var(--color-slate-950, #020617);
+    border: 1px solid color-mix(in srgb, var(--color-slate-700) 80%, transparent);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .wizard__output-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-slate-800);
+  }
+
+  .wizard__output-right {
+    text-align: right;
+  }
+
+  .wizard__output-label {
+    display: block;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-slate-400);
+    margin-bottom: var(--space-1);
+  }
+
+  .wizard__thickness {
+    font-size: var(--text-3xl);
+    font-weight: 900;
+    color: var(--color-brand-400, #38bdf8);
+    letter-spacing: -0.02em;
+    transition: all var(--transition-normal);
+  }
+
+  .wizard__rvalue {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-eco-500, #22c55e);
+    transition: all var(--transition-normal);
+  }
+
+  /* ── Mockup visual ── */
+  .wizard__mockup-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .wizard__mockup {
+    display: flex;
+    align-items: stretch;
+    height: 2.5rem;
+    background: var(--color-slate-900);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-slate-800);
+  }
+
+  .wizard__mockup-skin {
+    flex-shrink: 0;
+    width: 6px;
+    background: var(--color-slate-600);
+  }
+
+  .wizard__mockup-core {
+    flex-basis: 25%;
+    background: color-mix(in srgb, var(--color-amber-500, #f59e0b) 20%, transparent);
+    border-right: 2px dashed var(--color-amber-500, #f59e0b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: flex-basis var(--transition-normal);
+    overflow: hidden;
+  }
+
+  .wizard__mockup-core-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: var(--color-amber-500, #f59e0b);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-inline: var(--space-2);
+  }
+
+  .wizard__mockup-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: var(--color-slate-500);
+    font-weight: 600;
+    padding-inline: 2px;
+  }
+
+  /* ── CTA ── */
+  .wizard__cta {
+    display: block;
+    text-align: center;
+    background: var(--color-brand-600);
+    color: white;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-xl);
+    transition: background var(--transition-fast);
+  }
+
+  .wizard__cta:hover {
+    background: var(--color-brand-700);
+  }
+</style>

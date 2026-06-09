@@ -10,7 +10,7 @@ export const es: TranslationKeys = {
     whatIs: "¿Qué es un Panel?",
     benefits: "Beneficios Clave",
     calculator: "Calculadora de Espesor",
-    blog: "Guía del Comprador",
+    blog: "Blog",
     cta: "Guía Gratuita",
   },
   hero: {

@@ -8,7 +8,7 @@ export const en = {
     whatIs: "What is a Panel?",
     benefits: "Key Benefits",
     calculator: "Thickness Calculator",
-    blog: "Buyer's Guide & Trends",
+    blog: "Blog",
     cta: "Free Buyer's Guide",
   },
   hero: {
