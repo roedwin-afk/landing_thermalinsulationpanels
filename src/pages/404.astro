@@ -1,0 +1,151 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations, getLang } from "../i18n/utils";
+
+
+const base = import.meta.env.BASE_URL;
+const lang = getLang(Astro.url, base);
+const t = useTranslations(lang);
+---
+
+<Layout
+  t={t}
+  lang={lang}
+  canonicalURL={Astro.url.href}
+  alternatePath={base + (lang === "en" ? "es/" : "")}
+>
+  <section class="not-found">
+    <div class="container not-found__inner">
+
+      <div class="not-found__code" aria-hidden="true">404</div>
+
+      <h1 class="not-found__title">Page not found</h1>
+      <p class="not-found__desc">
+        The page you're looking for doesn't exist or has been moved.
+        Let's get you back on track.
+      </p>
+
+      <div class="not-found__actions">
+        <a href={lang === "es" ? `${base}es/` : `${base}`} class="not-found__btn not-found__btn--primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Back to Home
+        </a>
+        <a href={`${base}#calculator`} class="not-found__btn not-found__btn--secondary">
+          Thickness Calculator
+        </a>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    min-height: calc(100svh - var(--nav-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-slate-50);
+    padding-block: var(--space-24);
+  }
+
+  .not-found__inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .not-found__code {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    background: linear-gradient(
+      135deg,
+      var(--color-brand-600),
+      var(--color-brand-900)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.15;
+    user-select: none;
+    margin-bottom: calc(var(--space-4) * -1);
+  }
+
+  @media (min-width: 640px) {
+    .not-found__code { font-size: 12rem; }
+  }
+
+  .not-found__title {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--color-slate-900);
+    line-height: 1.2;
+  }
+
+  @media (min-width: 640px) {
+    .not-found__title { font-size: var(--text-4xl); }
+  }
+
+  .not-found__desc {
+    font-size: var(--text-base);
+    color: var(--color-slate-600);
+    line-height: 1.7;
+    max-width: 30rem;
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    max-width: 20rem;
+  }
+
+  @media (min-width: 480px) {
+    .not-found__actions {
+      flex-direction: row;
+      max-width: none;
+      justify-content: center;
+    }
+  }
+
+  .not-found__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-xl);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    transition: background var(--transition-fast), color var(--transition-fast);
+  }
+
+  .not-found__btn--primary {
+    background: var(--color-brand-600);
+    color: white;
+  }
+
+  .not-found__btn--primary:hover {
+    background: var(--color-brand-700);
+  }
+
+  .not-found__btn--secondary {
+    background: white;
+    color: var(--color-slate-800);
+    border: 1px solid var(--color-slate-200);
+  }
+
+  .not-found__btn--secondary:hover {
+    background: var(--color-slate-100);
+  }
+</style>

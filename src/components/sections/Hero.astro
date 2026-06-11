@@ -12,16 +12,13 @@ const base = lang === "es" ? "/es" : "";
 ---
 
 <section class="hero" aria-labelledby="hero-title">
-
   <!-- Background decorations -->
-  <div class="hero__blob hero__blob--left"  aria-hidden="true"></div>
+  <div class="hero__blob hero__blob--left" aria-hidden="true"></div>
   <div class="hero__blob hero__blob--right" aria-hidden="true"></div>
 
   <div class="container hero__container">
-
     <!-- Left: Copy -->
     <div class="hero__copy reveal">
-
       <div class="hero__badge" aria-label="Resource badge">
         <span class="hero__badge-dot" aria-hidden="true"></span>
         {t.hero.badge}
@@ -36,23 +33,41 @@ const base = lang === "es" ? "/es" : "";
 
       <div class="hero__ctas">
         <a href={`${base}/#calculator`} class="btn btn--primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="4" y="2" width="16" height="20" rx="2"/>
-            <line x1="8" y1="6" x2="16" y2="6"/>
-            <line x1="8" y1="10" x2="16" y2="10"/>
-            <line x1="8" y1="14" x2="12" y2="14"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="4" y="2" width="16" height="20" rx="2"></rect>
+            <line x1="8" y1="6" x2="16" y2="6"></line>
+            <line x1="8" y1="10" x2="16" y2="10"></line>
+            <line x1="8" y1="14" x2="12" y2="14"></line>
           </svg>
           {t.hero.ctaPrimary}
         </a>
         <a href={`${base}/#what-is`} class="btn btn--secondary">
           {t.hero.ctaSecondary}
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="12" y1="5" x2="12" y2="19"/>
-            <polyline points="19 12 12 19 5 12"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
           </svg>
         </a>
       </div>
@@ -76,13 +91,11 @@ const base = lang === "es" ? "/es" : "";
 
     <!-- Right: Interactive anatomy -->
     <div class="hero__anatomy reveal" style="--reveal-delay: 150ms">
-
       <div class="anatomy-card">
         <span class="anatomy-card__badge">{t.hero.anatomy.badge}</span>
         <h3 class="anatomy-card__subtitle">{t.hero.anatomy.subtitle}</h3>
 
         <div class="anatomy-layers" role="list">
-
           <!-- Outer layer -->
           <button
             class="layer layer--outer"
@@ -93,7 +106,9 @@ const base = lang === "es" ? "/es" : "";
           >
             <div class="layer__header">
               <span class="layer__label">{t.hero.anatomy.outer.label}</span>
-              <span class="layer__tag layer__tag--exterior">{t.hero.anatomy.outer.tag}</span>
+              <span class="layer__tag layer__tag--exterior"
+                >{t.hero.anatomy.outer.tag}</span
+              >
             </div>
             <p class="layer__desc">{t.hero.anatomy.outer.desc}</p>
           </button>
@@ -108,7 +123,9 @@ const base = lang === "es" ? "/es" : "";
           >
             <div class="layer__header">
               <span class="layer__label">{t.hero.anatomy.core.label}</span>
-              <span class="layer__tag layer__tag--insulation">{t.hero.anatomy.core.tag}</span>
+              <span class="layer__tag layer__tag--insulation"
+                >{t.hero.anatomy.core.tag}</span
+              >
             </div>
             <p class="layer__desc">{t.hero.anatomy.core.desc}</p>
           </button>
@@ -123,7 +140,9 @@ const base = lang === "es" ? "/es" : "";
           >
             <div class="layer__header">
               <span class="layer__label">{t.hero.anatomy.inner.label}</span>
-              <span class="layer__tag layer__tag--interior">{t.hero.anatomy.inner.tag}</span>
+              <span class="layer__tag layer__tag--interior"
+                >{t.hero.anatomy.inner.tag}</span
+              >
             </div>
             <p class="layer__desc">{t.hero.anatomy.inner.desc}</p>
           </button>
@@ -132,12 +151,20 @@ const base = lang === "es" ? "/es" : "";
         <!-- Info box -->
         <div class="anatomy-info" id="anatomy-info" aria-live="polite">
           <div class="anatomy-info__icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="16" x2="12" y2="12"/>
-              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
             </svg>
           </div>
           <div>
@@ -151,7 +178,6 @@ const base = lang === "es" ? "/es" : "";
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -160,9 +186,15 @@ const base = lang === "es" ? "/es" : "";
   type="application/json"
   id="anatomy-data"
   set:html={JSON.stringify({
-    outer: { title: t.hero.anatomy.outer.label, desc: t.hero.anatomy.outer.desc },
-    core:  { title: t.hero.anatomy.core.label,  desc: t.hero.anatomy.core.desc  },
-    inner: { title: t.hero.anatomy.inner.label, desc: t.hero.anatomy.inner.desc },
+    outer: {
+      title: t.hero.anatomy.outer.label,
+      desc: t.hero.anatomy.outer.desc,
+    },
+    core: { title: t.hero.anatomy.core.label, desc: t.hero.anatomy.core.desc },
+    inner: {
+      title: t.hero.anatomy.inner.label,
+      desc: t.hero.anatomy.inner.desc,
+    },
   })}
 />
 
@@ -171,11 +203,14 @@ const base = lang === "es" ? "/es" : "";
     const dataEl = document.getElementById("anatomy-data");
     if (!dataEl) return;
 
-    const data = JSON.parse(dataEl.textContent ?? "{}") as Record<string,{ title: string; desc: string }>;
+    const data = JSON.parse(dataEl.textContent ?? "{}") as Record<
+      string,
+      { title: string; desc: string }
+    >;
 
     const layers = document.querySelectorAll<HTMLElement>(".layer");
     const titleEl = document.getElementById("anatomy-title");
-    const descEl  = document.getElementById("anatomy-desc");
+    const descEl = document.getElementById("anatomy-desc");
 
     layers.forEach((layer) => {
       layer.addEventListener("click", () => {
@@ -192,7 +227,7 @@ const base = lang === "es" ? "/es" : "";
         // Update info box
         if (titleEl && descEl && data[key]) {
           titleEl.textContent = data[key].title;
-          descEl.textContent  = data[key].desc;
+          descEl.textContent = data[key].desc;
         }
       });
     });
@@ -217,7 +252,9 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @media (min-width: 768px) {
-    .hero { padding-block: var(--space-24); }
+    .hero {
+      padding-block: var(--space-24);
+    }
   }
 
   /* ─── Blobs ─── */
@@ -267,7 +304,9 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @media (min-width: 1024px) {
-    .hero__copy { text-align: left; }
+    .hero__copy {
+      text-align: left;
+    }
   }
 
   /* Badge */
@@ -286,7 +325,9 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @media (min-width: 1024px) {
-    .hero__badge { align-self: flex-start; }
+    .hero__badge {
+      align-self: flex-start;
+    }
   }
 
   .hero__badge-dot {
@@ -298,8 +339,13 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.4; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
   }
 
   /* Title */
@@ -311,8 +357,16 @@ const base = lang === "es" ? "/es" : "";
     line-height: 1.1;
   }
 
-  @media (min-width: 640px)  { .hero__title { font-size: var(--text-5xl); } }
-  @media (min-width: 1024px) { .hero__title { font-size: var(--text-6xl); } }
+  @media (min-width: 640px) {
+    .hero__title {
+      font-size: var(--text-5xl);
+    }
+  }
+  @media (min-width: 1024px) {
+    .hero__title {
+      font-size: var(--text-6xl);
+    }
+  }
 
   .hero__title-gradient {
     background: linear-gradient(
@@ -335,7 +389,9 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @media (min-width: 1024px) {
-    .hero__description { margin-inline: 0; }
+    .hero__description {
+      margin-inline: 0;
+    }
   }
 
   /* CTAs */
@@ -354,7 +410,9 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @media (min-width: 1024px) {
-    .hero__ctas { justify-content: flex-start; }
+    .hero__ctas {
+      justify-content: flex-start;
+    }
   }
 
   .btn {
@@ -405,7 +463,9 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @media (min-width: 1024px) {
-    .hero__stats { margin-inline: 0; }
+    .hero__stats {
+      margin-inline: 0;
+    }
   }
 
   .hero__stat {
@@ -422,7 +482,9 @@ const base = lang === "es" ? "/es" : "";
   }
 
   @media (min-width: 640px) {
-    .hero__stat-value { font-size: var(--text-3xl); }
+    .hero__stat-value {
+      font-size: var(--text-3xl);
+    }
   }
 
   .hero__stat-label {
@@ -500,8 +562,12 @@ const base = lang === "es" ? "/es" : "";
   }
 
   .layer--core {
-    border-color: var(--color-brand-600);
+    border-color: var(--color-amber-500);
     background-color: rgb(255 251 235 / 0.4);
+  }
+  .layer--core:not(.layer--active):not(:hover) {
+    border-color: var(--color-slate-200);
+    background-color: var(--color-slate-50);
   }
 
   .layer--core:hover,
@@ -586,5 +652,7 @@ const base = lang === "es" ? "/es" : "";
   }
 
   /* ─── Reveal delays ─── */
-  .reveal { transition-delay: var(--reveal-delay, 0ms); }
+  .reveal {
+    transition-delay: var(--reveal-delay, 0ms);
+  }
 </style>

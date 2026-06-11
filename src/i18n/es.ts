@@ -11,7 +11,7 @@ export const es: TranslationKeys = {
     benefits: "Beneficios Clave",
     calculator: "Calculadora de Espesor",
     blog: "Blog",
-    cta: "Guía Gratuita",
+    cta: "Solicitar Presupuesto",
   },
   hero: {
     badge: "El Recurso Definitivo del Comprador para 2026",
@@ -199,5 +199,17 @@ export const es: TranslationKeys = {
   modal: {
     footerNote: "Primero educamos para que construyas con seguridad.",
     cta: "Obtener Plano de Dimensionado",
+  },
+  faq: {
+    eyebrow: "¿Tienes Dudas?",
+    title: "Preguntas Frecuentes",
+    description: "Todo lo que necesitas saber antes de comprar paneles de aislamiento térmico.",
+    items: {
+      q1: { question: "¿Cuál es la diferencia entre paneles PIR y PUR?", answer: "El PIR (Poliisocianurato) es la evolución moderna del PUR (Poliuretano). Los paneles PIR ofrecen mayor valor de aislamiento por milímetro y una resistencia al fuego significativamente mejor. Para la mayoría de nuevas construcciones, el PIR es la opción recomendada. El PUR sigue siendo una alternativa rentable para proyectos de cadena de frío donde las clasificaciones de fuego son menos críticas." },
+      q2: { question: "¿Cómo sé qué espesor de panel necesito?", answer: "El espesor depende de dos factores: la aplicación (residencial, industrial, cámara frigorífica) y el clima local. Como referencia: muros residenciales suelen necesitar 50–80 mm, cubiertas industriales 80–120 mm, cámaras de refrigeración 100–140 mm y cámaras de congelación 150–200 mm. Usa nuestra Calculadora de Espesor para una recomendación precisa." },
+      q3: { question: "¿Son aptos los paneles sándwich para fachadas exteriores?", answer: "Sí. Los paneles de fachada incorporan juntas machihembradas que sellan frente al viento, la lluvia y la humedad. La chapa exterior va prelacada con recubrimientos resistentes a la corrosión (poliéster o PVDF) diseñados para durar 25–40 años con mantenimiento mínimo." },
+      q4: { question: "¿Se pueden reciclar los paneles sándwich?", answer: "Sí. Las chapas de acero son 100% reciclables al final de su vida útil. Los núcleos modernos de PIR y PUR se fabrican sin agentes expansores que dañen la capa de ozono. Además, los paneles son modulares y fáciles de desmontar, lo que los hace ideales para proyectos de construcción circular." },
+      q5: { question: "¿Cuánto tiempo tarda la instalación frente a la construcción tradicional?", answer: "Los paneles sándwich pueden reducir el tiempo de construcción hasta 3 veces frente a la obra tradicional. Una nave industrial que tardaría 8 semanas en construirse de forma convencional puede quedar cerrada y aislada en menos de 3 semanas con paneles, ya que cada panel actúa a la vez como estructura, aislamiento y acabado." },
+    },
   },
 };

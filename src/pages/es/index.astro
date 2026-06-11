@@ -4,6 +4,7 @@ import Hero from "../../components/sections/Hero.astro";
 import WhatIs from "../../components/sections/WhatIs.astro";
 import Benefits from "../../components/sections/Benefits.astro";
 import Calculator from "../../components/sections/Calculator.astro";
+import Faq from "../../components/sections/Faq.astro";
 import { getLang, useTranslations, getAlternatePath } from "../../i18n/utils";
 
 const base = import.meta.env.BASE_URL;
@@ -28,4 +29,5 @@ console.log({
   <WhatIs t={t} lang={lang} />
   <Benefits t={t} lang={lang} />
   <Calculator t={t}  />
+  <Faq t={t} />
 </Layout>

@@ -9,7 +9,7 @@ export const en = {
     benefits: "Key Benefits",
     calculator: "Thickness Calculator",
     blog: "Blog",
-    cta: "Free Buyer's Guide",
+    cta: "Get a Quote",
   },
   hero: {
     badge: "Ultimate Buyer's Resource for 2026",
@@ -197,6 +197,18 @@ export const en = {
   modal: {
     footerNote: "Educating first to help you construct safely.",
     cta: "Get Sizing Blueprint",
+  },
+  faq: {
+    eyebrow: "Got Questions?",
+    title: "Frequently Asked Questions",
+    description: "Everything you need to know before buying thermal insulation panels.",
+    items: {
+      q1: { question: "What is the difference between PIR and PUR panels?", answer: "PIR (Polyisocyanurate) is the modern evolution of PUR (Polyurethane). PIR panels have a higher insulation value per millimeter and significantly better fire resistance. For most new construction projects, PIR is the recommended choice. PUR remains a cost-effective option for cold-chain projects where fire ratings are less critical." },
+      q2: { question: "How do I know what panel thickness I need?", answer: "Thickness depends on two factors: the application (residential, industrial, cold storage) and the local climate. As a baseline: residential walls typically need 50–80 mm, industrial roofing 80–120 mm, chilled rooms 100–140 mm, and deep-freeze rooms 150–200 mm. Use our Thickness Calculator above for a precise recommendation." },
+      q3: { question: "Are sandwich panels suitable for exterior walls?", answer: "Yes. Wall panels feature interlocking joint profiles that seal against wind, rain, and moisture. The outer steel skin is pre-painted with corrosion-resistant coatings (polyester or PVDF) designed to last 25–40 years with minimal maintenance." },
+      q4: { question: "Can sandwich panels be recycled?", answer: "Yes. The steel facings are 100% recyclable at end of life. Modern PIR and PUR foam cores are manufactured without ozone-depleting blowing agents. Panels are also modular and easy to disassemble, making them ideal for circular construction projects." },
+      q5: { question: "How long does installation take compared to traditional construction?", answer: "Sandwich panels can reduce construction time by up to 3x versus traditional brick-and-mortar builds. A standard industrial unit that would take 8 weeks to build traditionally can be enclosed and insulated in under 3 weeks using panels, since each panel acts simultaneously as structure, insulation, and finish." },
+    },
   },
 } as const;
 

@@ -3,11 +3,14 @@ import NavLinks from "../ui/NavLinks.astro";
 import MobileMenu from "./MobileMenu.astro";
 import type { TranslationKeys } from "../../i18n/en";
 import type { Lang } from "../../i18n/utils";
+import { Image } from "astro:assets";
+
+import logo from "../../assets/logo.svg";
 
 interface Props {
   t: TranslationKeys;
   lang: Lang;
-  alternatePath: string;
+  alternatePath: any;
 }
 
 const { t, lang, alternatePath } = Astro.props;
@@ -34,10 +37,16 @@ const altLabel = lang === "es" ? "EN" : "ES";
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
         </div>
-        <div class="navbar__logo-text">
-          <span class="navbar__logo-brand">THERMAL</span>
-          <span class="navbar__logo-sub">Insulation Panels</span>
-        </div>
+        <Image
+          src={logo}
+          alt="Panel sándwich para techo industrial"
+          width={200}
+          height={50}
+          class="navbar__logo-img"
+          format="svg"
+          quality={85}
+          loading="eager"
+        />
       </a>
 
       <!-- Desktop nav -->
