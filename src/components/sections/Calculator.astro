@@ -7,6 +7,8 @@ interface Props {
 
 const { t } = Astro.props;
 const c = t.calculator;
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="calculator" class="calculator reveal">
@@ -125,7 +127,7 @@ const c = t.calculator;
         </div>
       </div>
 
-      <a href="#download-guide" class="wizard__cta">{c.wizard.cta}</a>
+      <a href={`${base}contact`} class="wizard__cta">{c.wizard.cta}</a>
     </div>
 
   </div>

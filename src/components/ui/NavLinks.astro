@@ -13,10 +13,10 @@ const { t, lang, variant = "navbar" } = Astro.props;
 const base = lang === "es" ? import.meta.env.BASE_URL + "es" : import.meta.env.BASE_URL;
 
 const links = [
-  { href: `${base}/#what-is`,    label: t.nav.whatIs     },
-  { href: `${base}/#benefits`,   label: t.nav.benefits   },
-  { href: `${base}/#calculator`, label: t.nav.calculator },
-  { href: `${base}blog`,       label: t.nav.blog       },
+  { href: `${base}panel-types`,  label: t.nav.panelTypes  },
+  { href: `${base}/#benefits`,    label: t.nav.benefits    },
+  { href: `${base}/#calculator`,  label: t.nav.calculator  },
+  { href: `${base}blog`,         label: t.nav.blog        },
 ];
 ---
 
