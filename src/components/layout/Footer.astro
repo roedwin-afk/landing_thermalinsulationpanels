@@ -2,6 +2,9 @@
 import NavLinks from "../ui/NavLinks.astro";
 import type { TranslationKeys } from "../../i18n/en";
 import type { Lang } from "../../i18n/utils";
+import { Image } from "astro:assets";
+
+import logo from "../../assets/logo.svg";
 
 interface Props {
   t: TranslationKeys;
@@ -31,7 +34,16 @@ const base = lang === "es" ? "/es" : "";
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
-          <span class="footer__logo-name">Thermal Insulation Panels</span>
+          <Image
+          src={logo}
+          alt="Panel sándwich para techo industrial"
+          width={200}
+          height={50}
+          class="footer__logo-img"
+          format="svg"
+          quality={85}
+          loading="eager"
+        />
         </a>
         <p class="footer__tagline">{t.footer.tagline}</p>
       </div>
@@ -104,6 +116,13 @@ const base = lang === "es" ? "/es" : "";
     align-items: center;
     gap: var(--space-2);
   }
+  .footer__logo-img {
+        display: block;
+        height: 4.5rem;
+        width: auto;
+        filter: brightness(0) invert(1);
+    }
+
 
   .footer__logo-icon {
     display: flex;

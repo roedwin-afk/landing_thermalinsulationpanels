@@ -236,6 +236,73 @@ export const en = {
       required: "*",
     },
   },
+  panelTypes: {
+    meta: {
+      title: "Panel Types | Thermal Insulation Panels",
+      description: "Compare PIR, PUR, Mineral Wool and EPS sandwich panels. Find the right core material for your project based on performance, fire rating, and cost.",
+    },
+    hero: {
+      eyebrow: "Complete Comparison Guide",
+      title: "Which Panel Type is Right for You?",
+      description: "Not all insulation panels are equal. Each core material has a specific strength: thermal performance, fire resistance, acoustic blocking, or cost efficiency. Here is everything you need to decide.",
+    },
+    comparison: {
+      title: "Side-by-Side Comparison",
+      description: "Key performance indicators across all four panel core types.",
+      headers: {
+        feature: "Feature",
+        pir: "PIR",
+        pur: "PUR",
+        mineral: "Mineral Wool",
+        eps: "EPS",
+      },
+      rows: {
+        thermal: { label: "Thermal Performance", pir: "Excellent", pur: "Very Good", mineral: "Good", eps: "Moderate" },
+        fire: { label: "Fire Resistance", pir: "Very Good", pur: "Good", mineral: "Excellent", eps: "Poor" },
+        acoustic: { label: "Acoustic Insulation", pir: "Moderate", pur: "Moderate", mineral: "Excellent", eps: "Low" },
+        moisture: { label: "Moisture Resistance", pir: "Excellent", pur: "Excellent", mineral: "Good", eps: "Good" },
+        weight: { label: "Weight", pir: "Light", pur: "Light", mineral: "Heavy", eps: "Very Light" },
+        cost: { label: "Relative Cost", pir: "Medium", pur: "Low–Medium", mineral: "High", eps: "Low" },
+        bestFor: { label: "Best For", pir: "Roofs & facades", pur: "Cold storage", mineral: "Fire-rated builds", eps: "Partitions & ceilings" },
+      },
+    },
+    types: {
+      pir: {
+        tag: "Industry Standard",
+        title: "PIR — Polyisocyanurate",
+        description: "PIR is the most widely specified panel core in modern construction. Its closed-cell structure delivers the highest thermal resistance per millimeter available, meaning thinner panels achieve the same R-value as thicker alternatives. PIR also carries improved fire behavior compared to standard polyurethane, making it the default choice for roofing and facade applications.",
+        strengths: ["Highest thermal efficiency per mm", "Self-extinguishing fire behavior", "Excellent moisture resistance", "Widely available in all thicknesses"],
+        idealFor: "Commercial roofing, industrial facades, cold chain facilities",
+      },
+      pur: {
+        tag: "Best Value",
+        title: "PUR — Polyurethane",
+        description: "PUR panels were the industry baseline before PIR became dominant. They still offer outstanding insulation performance at a lower cost point, combined with exceptional resistance to water ingress. PUR remains the preferred choice for cold storage projects where budget is a primary constraint and fire ratings are secondary.",
+        strengths: ["Cost-effective insulation", "Outstanding water resistance", "High compressive strength", "Proven cold-chain performance"],
+        idealFor: "Cold rooms, refrigerated warehouses, budget industrial builds",
+      },
+      mineral: {
+        tag: "Fire Safe",
+        title: "Mineral Wool — Rockwool",
+        description: "Mineral wool is the only non-combustible core option available in sandwich panel construction. It achieves the highest fire resistance classifications (up to 240 minutes) and provides exceptional acoustic dampening. The trade-off is a heavier panel and a higher price point, but for projects requiring certified fire compartmentation, there is no substitute.",
+        strengths: ["Non-combustible — highest fire ratings", "Superior acoustic performance", "Chemically inert and rot-proof", "Required for many building codes"],
+        idealFor: "Airport terminals, hospitals, schools, fire-compartmented buildings",
+      },
+      eps: {
+        tag: "Lightweight",
+        title: "EPS — Expanded Polystyrene",
+        description: "EPS is the most economical and lightest panel core available. While its thermal performance and fire resistance are lower than PIR or mineral wool, it excels in applications where structural loads are minimal and cost is the primary driver. EPS panels are commonly used for interior partitions, agricultural buildings, and temporary structures.",
+        strengths: ["Lowest cost option", "Extremely lightweight", "Easy to cut and handle on site", "Good moisture resistance"],
+        idealFor: "Interior partitions, agricultural sheds, temporary buildings, ceilings",
+      },
+    },
+    cta: {
+      title: "Not Sure Which Panel to Choose?",
+      description: "Use our Thickness Calculator to get a recommendation based on your application and climate, or contact our team directly for a custom quote.",
+      primary: "Use the Calculator",
+      secondary: "Request a Quote",
+    },
+  },
 } as const;
 
 export type DeepString<T> = {

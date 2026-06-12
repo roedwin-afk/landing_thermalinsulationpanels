@@ -238,4 +238,71 @@ export const es: TranslationKeys = {
       required: "*",
     },
   },
+  panelTypes: {
+    meta: {
+      title: "Tipos de Panel | Paneles de Aislamiento Térmico",
+      description: "Compara paneles sándwich PIR, PUR, Lana Mineral y EPS. Encuentra el material de núcleo adecuado según rendimiento, resistencia al fuego y coste.",
+    },
+    hero: {
+      eyebrow: "Guía Comparativa Completa",
+      title: "¿Qué Tipo de Panel es el Adecuado para Ti?",
+      description: "No todos los paneles de aislamiento son iguales. Cada material de núcleo tiene una fortaleza específica: rendimiento térmico, resistencia al fuego, aislamiento acústico o eficiencia de coste. Aquí tienes todo lo que necesitas para decidir.",
+    },
+    comparison: {
+      title: "Comparativa Directa",
+      description: "Indicadores clave de rendimiento para los cuatro tipos de núcleo.",
+      headers: {
+        feature: "Característica",
+        pir: "PIR",
+        pur: "PUR",
+        mineral: "Lana Mineral",
+        eps: "EPS",
+      },
+      rows: {
+        thermal: { label: "Rendimiento Térmico", pir: "Excelente", pur: "Muy Bueno", mineral: "Bueno", eps: "Moderado" },
+        fire: { label: "Resistencia al Fuego", pir: "Muy Bueno", pur: "Bueno", mineral: "Excelente", eps: "Bajo" },
+        acoustic: { label: "Aislamiento Acústico", pir: "Moderado", pur: "Moderado", mineral: "Excelente", eps: "Bajo" },
+        moisture: { label: "Resistencia a la Humedad", pir: "Excelente", pur: "Excelente", mineral: "Buena", eps: "Buena" },
+        weight: { label: "Peso", pir: "Ligero", pur: "Ligero", mineral: "Pesado", eps: "Muy Ligero" },
+        cost: { label: "Coste Relativo", pir: "Medio", pur: "Bajo–Medio", mineral: "Alto", eps: "Bajo" },
+        bestFor: { label: "Ideal Para", pir: "Cubiertas y fachadas", pur: "Cámaras frigoríficas", mineral: "Obra con certificación de fuego", eps: "Divisorias y techos" },
+      },
+    },
+    types: {
+      pir: {
+        tag: "Estándar del Sector",
+        title: "PIR — Poliisocianurato",
+        description: "El PIR es el núcleo de panel más especificado en la construcción moderna. Su estructura de celda cerrada ofrece la mayor resistencia térmica por milímetro disponible, lo que significa que paneles más delgados logran el mismo valor R que alternativas más gruesas. El PIR también tiene un mejor comportamiento ante el fuego en comparación con el poliuretano estándar.",
+        strengths: ["Mayor eficiencia térmica por mm", "Comportamiento autoextinguible ante el fuego", "Excelente resistencia a la humedad", "Disponible en todos los espesores"],
+        idealFor: "Cubiertas comerciales, fachadas industriales, instalaciones de cadena de frío",
+      },
+      pur: {
+        tag: "Mejor Relación Calidad-Precio",
+        title: "PUR — Poliuretano",
+        description: "Los paneles PUR fueron la referencia del sector antes de que el PIR se impusiera. Siguen ofreciendo un excelente rendimiento de aislamiento a un coste menor, combinado con una resistencia excepcional a la entrada de agua. El PUR sigue siendo la opción preferida para proyectos de almacenamiento en frío donde el presupuesto es la principal restricción.",
+        strengths: ["Aislamiento rentable", "Resistencia sobresaliente al agua", "Alta resistencia a la compresión", "Rendimiento probado en cadena de frío"],
+        idealFor: "Cámaras frigoríficas, almacenes refrigerados, naves industriales económicas",
+      },
+      mineral: {
+        tag: "Seguridad contra Incendios",
+        title: "Lana Mineral — Rockwool",
+        description: "La lana mineral es la única opción de núcleo no combustible disponible en la construcción con paneles sándwich. Alcanza las clasificaciones de resistencia al fuego más altas (hasta 240 minutos) y proporciona un amortiguamiento acústico excepcional. El inconveniente es un panel más pesado y un precio más alto, pero para proyectos que requieren compartimentación de fuego certificada, no hay sustituto.",
+        strengths: ["No combustible — máximas clasificaciones de fuego", "Rendimiento acústico superior", "Químicamente inerte e imputrescible", "Requerido por muchos códigos de construcción"],
+        idealFor: "Terminales de aeropuerto, hospitales, escuelas, edificios con compartimentación de fuego",
+      },
+      eps: {
+        tag: "Ultraligero",
+        title: "EPS — Poliestireno Expandido",
+        description: "El EPS es el núcleo de panel más económico y ligero disponible. Aunque su rendimiento térmico y resistencia al fuego son menores que los del PIR o la lana mineral, destaca en aplicaciones donde las cargas estructurales son mínimas y el coste es el factor principal. Los paneles EPS se usan habitualmente en divisorias interiores, edificios agrícolas y estructuras temporales.",
+        strengths: ["Opción de menor coste", "Extremadamente ligero", "Fácil de cortar y manipular en obra", "Buena resistencia a la humedad"],
+        idealFor: "Divisorias interiores, naves agrícolas, edificios temporales, techos",
+      },
+    },
+    cta: {
+      title: "¿No Sabes Qué Panel Elegir?",
+      description: "Usa nuestra Calculadora de Espesor para obtener una recomendación según tu aplicación y clima, o contacta directamente con nuestro equipo para un presupuesto personalizado.",
+      primary: "Usar la Calculadora",
+      secondary: "Solicitar Presupuesto",
+    },
+  },
 };
