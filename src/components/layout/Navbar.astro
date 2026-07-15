@@ -18,7 +18,7 @@ const { t, lang, alternatePath } = Astro.props;
 
 
 const base = import.meta.env.BASE_URL;
-const homeURL = lang === "en" ? `${base}/` : `${base}/es/`;
+const homeURL = lang === "en" ? `${base}` : `${base}es/`;
 const altHref = alternatePath;
 const altLabel = lang === "es" ? "EN" : "ES";
 
